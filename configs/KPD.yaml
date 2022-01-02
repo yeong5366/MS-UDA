@@ -1,0 +1,52 @@
+model_params:
+  name: 'MS_UDA'
+
+exp_params:
+  dataset: 'kaist_pedestrian'
+  root_dir : './KPD/'
+  data_dir: '/kaist_pedestrian_dataset/'
+  num_classes: 19
+  gpus: "0,1,2,3"
+  input_size: '640, 512'
+  num_layers: 50
+
+init:
+  init_type: 'xavier'
+  init_gain: 0.02
+
+train_params:
+  batch_size: 16
+  max_epoch: 100
+  num_workers: 4
+  power: 0.9
+  norm: 'BatchNorm'
+  gan: 'LS'
+  lambda:
+    alpha: 1.0 #rgb stream seg loss coeff
+    beta: 0.10 #0.25
+    gamma: 0.01 #adv loss coeff
+  generator:
+    optimizer_type: 'SGD'
+    base_lr: 0.002 #0.001 for 8 BS (2BS/GPU) #0.0005 for 4 BS(1 BS /GPU)
+    momentum: 0.9
+    weight_decay: 0.0005
+  discriminator:
+    optimizer_type: 'Adam'
+    base_lr: 0.0002 #x0.1 of base_lr
+  decoder:
+    optimizer_type: 'SGD'
+    base_lr: 0.002
+    momentum: 0.9
+    weight_decay: 0.0005
+
+test_params:
+  batch_size: 24
+  num_workers: 4
+
+logging_params:
+  log_dir: 'logs'
+  save_dir: 'checkpoints'
+  tensorboard: True
+
+
+
