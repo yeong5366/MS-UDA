@@ -1,7 +1,3 @@
-"""
-github 주소:
-RTFNet,
-"""
 
 from torch.utils.data import DataLoader
 import torch.backends.cudnn as cudnn
