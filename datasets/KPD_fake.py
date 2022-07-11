@@ -28,7 +28,7 @@ class KP_dataset_fake(data.Dataset):
         assert len(self.rgb_names) == len(self.th_names)
 
         if transform is not None:
-            self.transform = transform  # training이 아니면 horizontalflip 없이 그냥 텐서로 바꿔야
+            self.transform = transform 
         else:
             self.transform = None
 
