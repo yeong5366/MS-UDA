@@ -13,7 +13,7 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 
 from utils.utils import set_requires_grad, adjust_learning_rate, \
-    visualize, load_state_from_model
+    load_state_from_model, visualize
 
 import argparse
 import time
@@ -42,18 +42,19 @@ if args.dataset =='KPdataset':
         parser.add_argument('--fake_prob', default=0.5, help='how many fake thermal images in whole training dataset')
         parser.add_argument('--config', '-c', default='configs/KPD_fake.yaml', help='path to the config file')
         augmentation_methods = [RandomFlip_KP_fake(prob=0.5)]
-        from datasets.KPD_fake import KP_dataset as dataset
+        from datasets.KPD_fake import KP_dataset_fake as dataset
     else:
         parser.add_argument('--config', '-c',default='configs/KPD.yaml',help='path to the config file')
         augmentation_methods = [RandomFlip_KP(prob=0.5)]
         from datasets.KPD import KP_dataset as dataset
     NUM_DATASET = 3283
+
 elif args.dataset =='MFdataset':
     if args.fake:
         parser.add_argument('--fake_prob', default=0.5, help='how many fake thermal images in whole training dataset')
         parser.add_argument('--config', '-c', default='configs/MFD_fake.yaml', help='path to the config file')
         augmentation_methods = [RandomFlip_MF_fake(prob=0.5)]
-        from datasets.MFD_fake import MF_dataset as dataset
+        from datasets.MFD_fake import MF_dataset_fake as dataset
     else:
         parser.add_argument('--config', '-c', default='configs/MFD.yaml', help='path to the config file')
         augmentation_methods = [RandomFlip_MF(prob=0.5)]

@@ -1,20 +1,19 @@
 import os
 import torch
 from torch.utils import data
-from torch.utils.data import DataLoader
 from torchvision import transforms, utils
 
 import numpy as np
 from PIL import Image
 
-class MF_dataset(data.Dataset):
+class MF_dataset_fake(data.Dataset):
     """
     rgb_img : BxCxHxW
     th_img : Bx1xHxW
     label : BxHxW
     """
 
-    def __init__(self, data_dir, split='day', training=True, transform=None, pseudo_folder = 'pseudo_all', fake_folder='Day2Night'):
+    def __init__(self, data_dir, split='day', transform=None, pseudo_folder = 'pseudo_all', fake_folder='Day2Night'):
 
         assert (split in ['day', 'night']), 'split must be day | night'
 
@@ -27,7 +26,6 @@ class MF_dataset(data.Dataset):
             self.transform = None
 
         self.data_dir = data_dir
-        self.training = training
         self.image_folder = 'images'
         self.label_folder = 'labels'
         self.pseudo_folder = pseudo_folder
@@ -54,7 +52,6 @@ class MF_dataset(data.Dataset):
         fake_path = os.path.join(self.data_dir, self.fake_folder, img_name + '_2N.png')
         fake = Image.open(fake_path)
         fake = np.asarray(fake, dtype = np.float32)
-
 
         if self.transform is not None:
             for func in self.transform:

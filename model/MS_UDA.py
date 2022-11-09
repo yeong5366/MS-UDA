@@ -20,15 +20,15 @@ class MS_UDA(nn.Module):
         norm = find_norm(args.norm)
 
         #we initialize the network and wrap with dataparallel/single gpu.
-        # encoders use pretrained weight
+        # encoders(rgb) use pretrained weight
         # decoder uses xavier uniform
         # discriminator is not initialized
 
         self.net_G_rgb = init_net(Generator(sensor='rgb', num_layers=self.num_layers), init_type=False,
-                                  net_type='generator', gpu=args.gpus,
+                                  net_type='encoder_rgb', gpu=args.gpus,
                                   init_gain=args.init_gain)
         self.net_G_thermal = init_net(Generator(sensor='thermal', num_layers=self.num_layers), init_type=False,
-                                      net_type='generator', gpu=args.gpus)
+                                      net_type='encoder_th', gpu=args.gpus)
         self.decoder = init_net(Decoder(args.num_classes, self.inplanes, norm_layer=norm), init_type=args.init_type,
                                 net_type='decoder', gpu=args.gpus)
         self.fin_D = init_net(fin_Discriminator(args.num_classes, norm_layer=norm), init_type=args.init_type,

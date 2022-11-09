@@ -287,7 +287,7 @@ def TL_rgb_th_visualize(rgb_images, th_images, pseudo_labels, predictions, names
         pred_img = predictions[i].argmax(0).cpu().numpy()
         visualize_cityscapes_palette(pred_path, pred_img)
 ####################################################################################################################
-def visualize_MF_with_GT(rgb_images, th_images, labels,pseudo_labels, preds, names, check_dir, epoch =None):
+def visualize_MF(rgb_images, th_images, labels, preds, names, check_dir, epoch =None):
     invTrans = transforms.Compose([transforms.Normalize(mean=[0., 0., 0.],
                                                        std=[1 / 0.229, 1 / 0.224, 1 / 0.225]),
                                   transforms.Normalize(mean=[-0.485, -0.456, -0.406],
@@ -418,7 +418,7 @@ def fill_colormap():
 def load_state_from_model(pretrained_weight, model, gpus):
     own_state = model.state_dict()
     # pretraiend_weight: part.module.layer2....
-    # model.state_dict(): part.layer2...(single gpu) 
+    # model.state_dict(): part.layer2...(single gpu)
 
     for name, param in pretrained_weight.items():
         if len(gpus) == 1:
@@ -482,6 +482,7 @@ def mono_sup_visualize_KP(rgb_images, th_images, labels, pseudo_labels, predicti
             label_img = label.cpu().numpy()
             visualize_cityscapes_palette_GT(label_path, label_img)
 
+# KP
 def TL_DA_visualize_with_GT(rgb_images, th_images, labels, pseudo_labels, pred1, pred2, names, check_dir, epoch=None):
 
     invTrans = transforms.Compose([transforms.Normalize(mean=[0., 0., 0.],

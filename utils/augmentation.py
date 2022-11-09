@@ -43,6 +43,20 @@ class RandomFlip_KP_real_label():
 
         return rgb_image, th_image, real_label, pseudo_label
 
+class RandomFlip_KP_real_label_fake():
+    def __init__(self, prob=0.5):
+        self.prob = prob
+
+    def __call__(self, rgb_image,th_image, real_label, pseudo_label, fake):
+        if np.random.rand() < self.prob:
+            rgb_image = rgb_image[:,::-1] - np.zeros_like(rgb_image)
+            th_image = th_image[:, ::-1] - np.zeros_like(th_image)
+            real_label = real_label[:,::-1] -np.zeros_like(real_label)
+            pseudo_label = pseudo_label[:,::-1] - np.zeros_like(pseudo_label)
+            fake = fake[:, ::-1] - np.zeros_like(fake)
+
+        return rgb_image, th_image, real_label, pseudo_label, fake
+
 class RandomFlip_MF():
     def __init__(self, prob=0.5):
         self.prob = prob
