@@ -366,7 +366,7 @@ if __name__ == '__main__':
             print('time taken: %.3f' % (time.time() - iter_start_time))
 
             if i % 100 == 0 :
-                TL_DA_visualize(rgb_images, th_images, labels, pred1, pred2, names, check_dir, epoch=epoch)
+                visualize(rgb_images, th_images, labels, pred1, pred2, names, check_dir, epoch=epoch)
                 print('visualize predictions ...')
             if total_iters == 0:
                 print('save test model ...')
