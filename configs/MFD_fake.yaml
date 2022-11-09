@@ -4,10 +4,10 @@ model_params:
 exp_params:
   dataset: 'kaist_pedestrian'
   root_dir : '/home/MSUDA/' # your absolute directory
-  data_dir: '/KPdataset/'
-  num_classes: 19
-  gpus: "0,1,2,3"
-  input_size: '640, 512'
+  data_dir: '/MFdataset/'
+  num_classes: 19 #cityscapes: 19, mfdataset: 9
+  gpus: '0,1,2,3'
+  input_size: '640, 480'
   num_layers: 50
 
 init:
@@ -23,7 +23,7 @@ train_params:
   gan: 'LS'
   lambda:
     alpha: 1.0 #rgb stream seg loss coeff
-    beta: 0.10 #0.25
+    beta: 0.25 #0.25 #thermal stream seg loss coeff
     gamma: 0.01 #adv loss coeff
   generator:
     optimizer_type: 'SGD'

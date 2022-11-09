@@ -2,12 +2,12 @@ model_params:
   name: 'MS_UDA'
 
 exp_params:
-  dataset: 'kaist_pedestrian'
+  dataset: 'mfdataset'
   root_dir : '/home/MSUDA/' # your absolute directory
-  data_dir: '/KPdataset/'
-  num_classes: 19
-  gpus: "0,1,2,3"
-  input_size: '640, 512'
+  data_dir: '/MFdataset/'
+  num_classes: 19 #cityscapes: 19, mfdataset: 9
+  gpus: '0,1,2,3'
+  input_size: '640, 480'
   num_layers: 50
 
 init:
