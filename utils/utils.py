@@ -418,7 +418,7 @@ def fill_colormap():
 def load_state_from_model(pretrained_weight, model, gpus):
     own_state = model.state_dict()
     # pretraiend_weight: part.module.layer2....
-    # model.state_dict(): part.layer2...(single gpu) ->여러개 일때는 상관없
+    # model.state_dict(): part.layer2...(single gpu) 
 
     for name, param in pretrained_weight.items():
         if len(gpus) == 1:
