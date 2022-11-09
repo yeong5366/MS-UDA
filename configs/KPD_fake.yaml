@@ -5,9 +5,9 @@ exp_params:
   dataset: 'kaist_pedestrian'
   root_dir : '/home/MSUDA/' # your absolute directory
   data_dir: '/KPdataset/'
-  num_classes: 19 #cityscapes: 19, mfdataset: 9
+  num_classes: 19
   gpus: '0,1,2,3'
-  input_size: '640, 480'
+  input_size: '640, 512'
   num_layers: 50
 
 init:
