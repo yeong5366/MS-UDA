@@ -4,7 +4,7 @@ This code is official code of [MS-UDA: Multi-Spectral Unsupervised Domain Adapta
 
 # About Dataset
 
-If you want to use KP dataset, please leave some comment here, https://github.com/yeong5366/MS-UDA/issues/2.
+If you want to use KP dataset, go to [here](https://drive.google.com/file/d/1W6A8IZD2mlP7Olo-Kaoa-kl60PIAN4oI/view?usp=sharing)
 And, Please cite our project.
 
 The KP dataset structure is:
